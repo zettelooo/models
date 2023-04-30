@@ -24,7 +24,7 @@
     "prepare": "husky install"
   },
   "peerDependencies": {
-    "@zettelyay/commons": ">= 1.0.0 < 2.x"
+    "@zettelyay/commons": ">= 2.0.0 < 3.x"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.5",
