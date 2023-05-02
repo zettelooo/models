@@ -4,29 +4,23 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
   "files.exclude": {
     "**/node_modules": true,
-    "desktop/dist": false,
-    "desktop/src/shared": false,
-    "web/temp": false
+    "dist": false
   },
   "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "telemetry.enableCrashReporter": false,
   "emmet.triggerExpansionOnTab": true,
   "search.exclude": {
     "**/node_modules": true,
@@ -41,8 +35,5 @@
     "**/venv/**": true,
     "env-*": true
   },
-  "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  }
+  "editor.suggest.snippetsPreventQuickSuggestions": false
 }

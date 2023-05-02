@@ -4,6 +4,12 @@ Core model type definitions and helper functions.
 
 ## Installation
 
+```bash
+$ npm install @zettelyay/models
+```
+
+## Development
+
 Clone the repository locally:
 
 
@@ -18,8 +24,6 @@ $ cd models
 $ npm install
 ```
 
-## Development
-
 It's recommended to use **VS Code** to develop this project.
 You need to have **Prettier** and **ESLint** extensions to be installed on your IDE.
 This project uses a modified version of the **Airbnb** style.
@@ -32,7 +36,7 @@ Lint check before commit:
 $ npm run lint-staged   # Alternatively:   $ npm run .l
 ```
 
-## Publishment
+## Publication
 
 Publish a new version of the NPM package:
 
@@ -44,6 +48,18 @@ $ npm version patch   # / minor / major / any other valid semantic version
 ```
 
 ## Misc
+
+Validate all official peer dependencies to Zettel packages:
+
+```bash
+$ npm run peers.validate
+```
+
+Upgrade all official peer dependencies to Zettel packages:
+
+```bash
+$ npm run peers.upgrade
+```
 
 Check for all the updates available on the dependencies:
 
