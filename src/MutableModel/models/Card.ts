@@ -1,4 +1,4 @@
-import { Id } from '@zettelyay/commons'
+import { Id } from '@zettelooo/commons'
 import { Base, Type } from '../types'
 import { Block } from '../types/Block'
 import { ExtensionManagedData } from '../types/ExtensionManagedData'

@@ -1,4 +1,4 @@
-import { Id, Timestamp } from '@zettelyay/commons'
+import { Id, Timestamp } from '@zettelooo/commons'
 import { Account } from './models/Account'
 import { AggregatedReaction } from './models/AggregatedReaction'
 import { Badge } from './models/Badge'

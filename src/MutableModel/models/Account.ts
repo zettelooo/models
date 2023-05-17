@@ -1,4 +1,4 @@
-import { Id, ReadonlyRecord, Timestamp } from '@zettelyay/commons'
+import { Id, ReadonlyRecord, Timestamp } from '@zettelooo/commons'
 import { Base, Type } from '../types'
 
 export interface Account extends Base {

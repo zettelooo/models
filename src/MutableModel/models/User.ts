@@ -1,4 +1,4 @@
-import { Id, Timestamp } from '@zettelyay/commons'
+import { Id, Timestamp } from '@zettelooo/commons'
 import { Base, Type } from '../types'
 
 export interface User extends Base {

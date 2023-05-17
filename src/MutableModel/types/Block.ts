@@ -1,4 +1,4 @@
-import { Id, Timestamp } from '@zettelyay/commons'
+import { Id, Timestamp } from '@zettelooo/commons'
 
 export type Block<T extends Block.Type = Block.Type> = {
   [Block.Type.Paragraph]: Block.Paragraph

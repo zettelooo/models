@@ -1,4 +1,4 @@
-import { Id, ReadonlyRecord } from '@zettelyay/commons'
+import { Id, ReadonlyRecord } from '@zettelooo/commons'
 import { ExtensionScope } from './ExtensionScope'
 
 export interface ExtensionHeader {
