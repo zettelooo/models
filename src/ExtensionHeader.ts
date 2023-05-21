@@ -11,6 +11,7 @@ export interface ExtensionHeader {
   }
   readonly name: string
   readonly description: string
+  readonly aiDescription?: string
   readonly avatar: {
     readonly file?: string
     readonly dataUrl?: string
