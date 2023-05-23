@@ -24,6 +24,7 @@ export namespace Block {
 
   export interface Base {
     readonly type: Type
+    readonly id: Id
     readonly extensionData: ExtensionData
   }
 
