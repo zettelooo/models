@@ -4,7 +4,6 @@ import { PageMember } from './PageMember'
 
 export interface SpaceMember extends Base {
   readonly type: Type.SpaceMember
-  readonly catalystUserId: Id
   readonly spaceId: Id
   readonly userId: Id
   readonly role: SpaceMember.Role

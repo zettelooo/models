@@ -1,4 +1,5 @@
 import { Id, Timestamp } from '@zettelooo/commons'
+import { ExtensionData } from './ExtensionData'
 
 export type Block<T extends Block.Type = Block.Type> = {
   [Block.Type.Paragraph]: Block.Paragraph
@@ -8,7 +9,6 @@ export type Block<T extends Block.Type = Block.Type> = {
   [Block.Type.ListItem]: Block.ListItem
   [Block.Type.Task]: Block.Task
   [Block.Type.Attachment]: Block.Attachment
-  // [Block.Type.ExtensionManaged]: Block.ExtensionManaged
 }[T]
 
 export namespace Block {
@@ -20,50 +20,39 @@ export namespace Block {
     ListItem = 'LIST_ITEM',
     Task = 'TASK',
     Attachment = 'ATTACHMENT',
-    // ExtensionManaged = 'EXTENSION_MANAGED',
   }
 
   export interface Base {
     readonly type: Type
-    readonly id: Id
-    // readonly extensionManagedData: ExtensionManagedData | null
+    readonly extensionData: ExtensionData
   }
 
-  export interface Paragraph extends Base {
+  export interface Paragraph extends Base, StyledText {
     readonly type: Type.Paragraph
-    readonly styledText: StyledText
   }
 
-  export interface Header extends Base {
+  export interface Header extends Base, StyledText {
     readonly type: Type.Header
-    readonly styledText: StyledText
     readonly level: 1 | 2 | 3 | 4 | 5 | 6
   }
 
-  export interface Quote extends Base {
+  export interface Quote extends Base, StyledText {
     readonly type: Type.Quote
-    readonly innerId: Id
-    readonly styledText: StyledText
   }
 
   export interface Code extends Base {
     readonly type: Type.Code
     readonly text: string
     readonly programmingLanguage: string | null
-    readonly caption: string | null
   }
 
-  export interface ListItem extends Base {
+  export interface ListItem extends Base, StyledText {
     readonly type: Type.ListItem
-    readonly innerId: Id
-    readonly styledText: StyledText
     readonly ordered: boolean
   }
 
-  export interface Task extends Base {
+  export interface Task extends Base, StyledText {
     readonly type: Type.Task
-    readonly innerId: Id
-    readonly styledText: StyledText
     readonly dueDate: Timestamp | null
     readonly isChecked: boolean
     readonly checkedByUserId: Id | null
@@ -72,7 +61,6 @@ export namespace Block {
 
   export interface Attachment extends Base {
     readonly type: Type.Attachment
-    readonly name: string | null
     readonly files: readonly Attachment.File[]
   }
 
@@ -85,11 +73,6 @@ export namespace Block {
     }
   }
 
-  // export interface ExtensionManaged extends Base {
-  //   readonly type: Type.ExtensionManaged
-  //   readonly extensionId: string
-  // }
-
   export interface StyledText {
     readonly text: string
     readonly styleGroups: readonly StyledText.StyleGroup[]
@@ -100,57 +83,15 @@ export namespace Block {
     export interface StyleGroup {
       readonly from: number
       readonly to: number
-      // readonly extensionManagedData: ExtensionManagedData | null
       readonly styles: readonly Style[]
     }
 
-    export type Style<T extends Style.Type = Style.Type> = {
-      [Style.Type.Strong]: Style.Strong
-      [Style.Type.Emphasis]: Style.Emphasis
-      [Style.Type.Code]: Style.Code
-      [Style.Type.LineThrough]: Style.LineThrough
-      [Style.Type.UnderLine]: Style.UnderLine
-      // [Style.Type.ExtensionManaged]: Style.ExtensionManaged
-    }[T]
-
-    export namespace Style {
-      export enum Type {
-        Strong = 'STRONG',
-        Emphasis = 'EMPHASIS',
-        Code = 'CODE',
-        LineThrough = 'LINE_THROUGH',
-        UnderLine = 'UNDER_LINE',
-        // ExtensionManaged = 'EXTENSION_MANAGED',
-      }
-
-      export interface Base {
-        readonly type: Type
-      }
-
-      export interface Strong extends Base {
-        readonly type: Type.Strong
-      }
-
-      export interface Emphasis extends Base {
-        readonly type: Type.Emphasis
-      }
-
-      export interface Code extends Base {
-        readonly type: Type.Code
-      }
-
-      export interface LineThrough extends Base {
-        readonly type: Type.LineThrough
-      }
-
-      export interface UnderLine extends Base {
-        readonly type: Type.UnderLine
-      }
-
-      // export interface ExtensionManaged extends Base {
-      //   readonly type: Type.ExtensionManaged
-      //   readonly extensionId: string
-      // }
+    export enum Style {
+      Strong = 'STRONG',
+      Emphasis = 'EMPHASIS',
+      Code = 'CODE',
+      LineThrough = 'LINE_THROUGH',
+      UnderLine = 'UNDER_LINE',
     }
 
     export type Annotation<T extends Annotation.Type = Annotation.Type> = {
@@ -159,7 +100,6 @@ export namespace Block {
       [Annotation.Type.ReferencedUser]: Annotation.ReferencedUser
       [Annotation.Type.ReferencedCard]: Annotation.ReferencedCard
       [Annotation.Type.ReferencedPage]: Annotation.ReferencedPage
-      // [Annotation.Type.ExtensionManaged]: Annotation.ExtensionManaged
     }[T]
 
     export namespace Annotation {
@@ -167,23 +107,20 @@ export namespace Block {
         HyperLink = 'HYPER_LINK',
         PlainLink = 'PLAIN_LINK',
         ReferencedUser = 'REFERENCED_USER',
-        ReferencedCard = 'REFERENCED_CARD',
         ReferencedPage = 'REFERENCED_PAGE',
-        // ExtensionManaged = 'EXTENSION_MANAGED',
+        ReferencedCard = 'REFERENCED_CARD',
       }
 
       export interface Base {
         readonly type: Type
-        readonly id: Id
         readonly from: number
         readonly to: number
-        // readonly extensionManagedData?: ExtensionManagedData
       }
 
       export interface HyperLink extends Base {
         readonly type: Type.HyperLink
         readonly url: string
-        readonly iconUrl?: string
+        readonly iconUrl: string | null
       }
 
       export interface PlainLink extends Base {
@@ -196,20 +133,15 @@ export namespace Block {
         readonly referencedUserId: Id
       }
 
-      export interface ReferencedCard extends Base {
-        readonly type: Type.ReferencedCard
-        readonly referencedCardId: Id
-      }
-
       export interface ReferencedPage extends Base {
         readonly type: Type.ReferencedPage
         readonly referencedPageId: Id
       }
 
-      // export interface ExtensionManaged extends Base {
-      //   readonly type: Type.ExtensionManaged
-      //   readonly extensionId: Id
-      // }
+      export interface ReferencedCard extends Base {
+        readonly type: Type.ReferencedCard
+        readonly referencedCardId: Id
+      }
     }
   }
 }

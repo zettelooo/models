@@ -16,11 +16,6 @@ export namespace Comment {
       readonly type: Target.Type.Card
       readonly cardId: Id
     }
-    [Target.Type.CardBlock]: {
-      readonly type: Target.Type.CardBlock
-      readonly cardId: Id
-      readonly blockId: Id
-    }
     [Target.Type.Comment]: {
       readonly type: Target.Type.Comment
       readonly commentId: Id
@@ -30,7 +25,6 @@ export namespace Comment {
   export namespace Target {
     export enum Type {
       Card = 'CARD',
-      CardBlock = 'CARD_BLOCK',
       Comment = 'COMMENT',
     }
   }
