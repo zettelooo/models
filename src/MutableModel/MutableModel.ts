@@ -11,3 +11,4 @@ export * from './models/Comment'
 export * from './models/Badge'
 
 export * from './types/Block'
+export * from './types/ExtensionData'
